@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Categories, SortPopup} from './components';
+import { Header, Categories, SortPopup } from './components';
 
 function App() {
   return (
@@ -15,8 +15,12 @@ function App() {
               'Гриль',
               'Острые',
               'Закрытые',
-            ]}/>
-            <SortPopup />
+            ]} />
+            <SortPopup items={[
+              'популярности', 
+              'цене', 
+              'алфавит'
+              ]} />
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
@@ -34,7 +38,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -71,7 +75,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -108,7 +112,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -145,7 +149,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -182,7 +186,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -219,7 +223,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -256,7 +260,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -293,7 +297,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
@@ -330,7 +334,7 @@ function App() {
                 </ul>
                 <ul>
                   <li className="active">26 см.</li>
-      <li>30 см.</li>
+                  <li>30 см.</li>
                   <li>40 см.</li>
                 </ul>
               </div>
