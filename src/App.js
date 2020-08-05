@@ -1,5 +1,7 @@
 import React from 'react';
-import {Route} from 'react-router-dom'
+import {Route} from 'react-router-dom';
+import axios from 'axios';
+
 
 import { Header } from './components';
 import { Home, Cart } from './pages';
@@ -8,11 +10,8 @@ function App() {
   const [pizzas, setPizzas] = React.useState([]);
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/db.json')
-      .then(response => response.json())
-      .then(data =>  setPizzas(data.pizzas))
-      .catch(err => console.log(err))  
-    
+    axios.get('http://localhost:3000/db.json')
+      .then(({ data }) => setPizzas(data.pizzas))
   }, [])
 
   console.log(pizzas)
