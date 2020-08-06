@@ -1,4 +1,5 @@
-const setSortby = (name) => ({
+// Action Creators
+const setSortBy = (name) => ({
     type: 'SET_SORT_BY',
     payload: name,
 });
