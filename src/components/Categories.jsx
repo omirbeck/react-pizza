@@ -1,21 +1,17 @@
 import React, { useState } from 'react';
+import propTypes from 'prop-types';
 
-export default ({ items, onClick }) => {
-    const [activeItem, setActiveItem] = useState(null);
-
-    const onSelectItem = (index) => {
-        setActiveItem(index);
-    }
+const Categories = React.memo(({ activeCategory, items, onClickCategory }) => {
 
     return (
         <div className="categories">
             <ul>
-                <li className={activeItem === null ? 'active' : ''} onClick={() => setActiveItem(null)}>Все</li>
+                <li className={activeCategory === null ? 'active' : ''} onClick={() => onClickCategory(null)}>Все</li>
                 {items &&
                     items.map((name, index) => (
                         <li
-                            className={activeItem === index ? 'active' : ''}
-                            onClick={() => onSelectItem(index)}
+                            className={activeCategory === index ? 'active' : ''}
+                            onClick={() => onClickCategory(index)}
                             key={`${name}_${index}`}>
                             {name}
                         </li>
@@ -24,3 +20,17 @@ export default ({ items, onClick }) => {
         </div>
     );
 }
+)
+
+Categories.propTypes = {
+    activeCategory: propTypes.oneOfType([propTypes.number, null]),
+    items: propTypes.arrayOf(propTypes.string).isRequired,
+    onClickCategory: propTypes.func
+};
+
+Categories.defaultProps = {
+    activeCategory: null,
+    items: []
+}
+
+export default Categories;

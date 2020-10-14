@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
+import propTypes from 'prop-types';
 
-function SortPopup({ items }) {
+
+const SortPopup = React.memo(function SortPopup({ activeSortType, items, onClickSortType }) {
   const [visiblePopup, setVisiblePopup] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
-
   const sortRef = useRef();
-  const activeLabel = items[activeItem].name;
-  console.log(activeLabel);
+  const activeLabel = items.find(obj => obj.type === activeSortType).name;
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
   };
 
   const handleOutsideClick = (event) => {
-    if (!event.path.includes(sortRef.current)) {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(sortRef.current)) {
       setVisiblePopup(false);
     }
   }
@@ -22,8 +22,8 @@ function SortPopup({ items }) {
     document.body.addEventListener('click', handleOutsideClick);
   }, []);
 
-  const onSelectItem = (index) => {
-    setActiveItem(index);
+  const onSelectItem = (type) => {
+    onClickSortType(type);
     setVisiblePopup(false);
   }
 
@@ -51,8 +51,8 @@ function SortPopup({ items }) {
           {items &&
             items.map((obj, index) => (
               <li
-                className={activeItem === index ? 'active' : ''}
-                onClick={() => onSelectItem(index)}
+                className={activeSortType === obj.type ? 'active' : ''}
+                onClick={() => onSelectItem(obj)}
                 key={`${obj.type}_${index}`}>
                 {obj.name}
               </li>
@@ -61,6 +61,16 @@ function SortPopup({ items }) {
       </div>)}
     </div>
   )
+})
+
+SortPopup.propTypes = {
+  activeSortType: propTypes.string.isRequired,
+  items: propTypes.arrayOf(propTypes.object).isRequired,
+  onClickSortType: propTypes.func.isRequired
+};
+
+SortPopup.defaultProps = {
+  items: []
 }
 
 export default SortPopup
